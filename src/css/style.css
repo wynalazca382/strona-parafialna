@@ -80,41 +80,37 @@ h3 {
   flex: 1 1 auto;
 }
 
-.nav-menu {
-  flex-shrink: 0;
+.nav-toggle-input {
+  /* Sam checkbox jest niewidoczny — steruje wyłącznie stanem CSS poniżej */
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.nav-menu summary {
+.nav-toggle-label {
   display: none;
   color: #fff;
   cursor: pointer;
-  list-style: none;
   font-weight: bold;
   padding: 0.4rem 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 6px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.nav-menu summary:hover {
+.nav-toggle-label:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.nav-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.nav-menu summary::marker {
-  content: "";
-}
-
 .nav-links {
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -129,19 +125,20 @@ h3 {
 
 /* Na małych ekranach: menu chowane pod przyciskiem "Menu" */
 @media (max-width: 640px) {
-  .nav-menu summary {
+  .nav-toggle-label {
     display: inline-block;
   }
 
   .nav-links {
-    display: none !important;
+    display: none;
     flex-direction: column;
     gap: 0.75rem;
+    width: 100%;
     margin-top: 0.75rem;
   }
 
-  .nav-menu[open] .nav-links {
-    display: flex !important;
+  .nav-toggle-input:checked ~ .nav-links {
+    display: flex;
   }
 }
 
