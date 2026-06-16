@@ -1,0 +1,16 @@
+# Zależności Node.js
+node_modules/
+
+# Wynik budowania Eleventy
+_site/
+
+# Logi i pliki tymczasowe
+*.log
+.cache/
+
+# Pliki systemowe / edytorów
+.DS_Store
+Thumbs.db
+
+# Narzędzia lokalne agentowe (niezwiązane z projektem)
+.qodo/

@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+title: "Strona główna"
+---
+<h1>Parafia {{ site.nazwa }}</h1>
+<p>Witamy na stronie naszej parafii. Tutaj znajdziesz aktualne ogłoszenia,
+intencje mszalne oraz wszystkie najważniejsze informacje.</p>
+
+<section>
+  <h2>Najnowsze ogłoszenia</h2>
+  <ul class="lista-ogloszen">
+    {% for ogloszenie in collections.ogloszenia %}
+      {% if loop.index <= 3 %}
+      <li class="karta">
+        <p class="data">{{ ogloszenie.data.data | polskaData }}</p>
+        <h3><a href="{{ ogloszenie.url | url }}">{{ ogloszenie.data.tytul }}</a></h3>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p><a href="{{ '/ogloszenia/' | url }}">Wszystkie ogłoszenia →</a></p>
+</section>
+
+<section>
+  <h2>Skrót informacji</h2>
+  <p><strong>Adres:</strong> {{ site.adres }}</p>
+  <p><strong>Kontakt:</strong> tel. {{ site.telefon }}, e-mail: {{ site.email }}</p>
+  <p>
+    <a href="{{ '/msza/' | url }}">Zobacz harmonogram Mszy Świętych →</a><br>
+    <a href="{{ '/intencje/' | url }}">Zobacz aktualne intencje mszalne →</a>
+  </p>
+</section>

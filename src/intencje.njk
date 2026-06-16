@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+title: "Intencje mszalne"
+permalink: "intencje/index.html"
+---
+<h1>Intencje mszalne</h1>
+
+{% if collections.intencje.length %}
+  {% set aktualny = collections.intencje[0] %}
+  <h2>{{ aktualny.data.tytul }}</h2>
+  {{ aktualny.templateContent | safe }}
+
+  {% if collections.intencje.length > 1 %}
+  <h2>Poprzednie tygodnie</h2>
+  <ul>
+    {% for tydzien in collections.intencje %}
+      {% if loop.index > 1 %}
+      <li><a href="{{ tydzien.url | url }}">{{ tydzien.data.tytul }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% else %}
+  <p>Intencje mszalne na ten tydzień nie zostały jeszcze opublikowane.</p>
+{% endif %}

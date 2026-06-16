@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+title: "Ogłoszenia"
+permalink: "ogloszenia/index.html"
+---
+<h1>Ogłoszenia parafialne</h1>
+
+<ul class="lista-ogloszen">
+  {% for ogloszenie in collections.ogloszenia %}
+  <li class="karta">
+    <p class="data">{{ ogloszenie.data.data | polskaData }}</p>
+    <h2>{{ ogloszenie.data.tytul }}</h2>
+    {{ ogloszenie.templateContent | safe }}
+  </li>
+  {% endfor %}
+</ul>
